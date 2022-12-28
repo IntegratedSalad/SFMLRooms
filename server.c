@@ -7,19 +7,22 @@
 #include <netinet/in.h>
 #include <errno.h>
 #include <string.h>
-#include "server.h"
 #include <unistd.h>
+#include "server.h"
+#include "interface.h"
 
 struct addrinfo s_Hints;
-struct addrinfo* s_Response;
+struct addrinfo* s_ServerInfo;
 int main(int argc, const char* argv[])
 {
+    setbuf(stdout, NULL);
+
     memset(&s_Hints, 0, sizeof(s_Hints));
     s_Hints.ai_flags = AI_PASSIVE;
     s_Hints.ai_family = AF_UNSPEC;
     s_Hints.ai_socktype = SOCK_STREAM;
 
-    int32_t addrinfo_status = getaddrinfo("192.168.1.21", PORT, &s_Hints, &s_Response);
+    int addrinfo_status = getaddrinfo("192.168.1.21", PORT, &s_Hints, &s_ServerInfo);
     //list_all_addresses(s_Response);
 
     if (addrinfo_status > 0)
@@ -28,14 +31,14 @@ int main(int argc, const char* argv[])
         return -1;
     }
 
-    int server_sfd = socket(s_Response->ai_family, s_Response->ai_socktype, s_Response->ai_protocol);
+    int server_sfd = socket(s_ServerInfo->ai_family, s_ServerInfo->ai_socktype, s_ServerInfo->ai_protocol);
     if (server_sfd < 0)
     {
         fprintf(stderr, "An error occured while creating a socket.");
         return -1;
     }
 
-    int bind_status = bind(server_sfd, s_Response->ai_addr, s_Response->ai_addrlen);
+    int bind_status = bind(server_sfd, s_ServerInfo->ai_addr, s_ServerInfo->ai_addrlen);
     if (bind_status < 0)
     {
         fprintf(stderr, "An error occured while binding the socket: %s", strerror(errno));
@@ -49,29 +52,41 @@ int main(int argc, const char* argv[])
         return -1;
     }
 
-    struct in_addr s_ia = ((struct sockaddr_in*)s_Response->ai_addr)->sin_addr;
+    struct in_addr s_ia = ((struct sockaddr_in*)s_ServerInfo->ai_addr)->sin_addr;
     fprintf(stdout, "Socket listening on port %s IP: %s\n", PORT, inet_ntoa(s_ia));
+    //freeaddrinfo(s_Response); // do we need s_Response here?
 
-    exit(0);
     int client_sfd = 0;
-    struct sockaddr c_Response;
-    socklen_t c_addr_len = sizeof(c_Response);
+    struct sockaddr s_ClientResponse;
+    socklen_t c_addr_len = sizeof(s_ClientResponse);
+
+    int bytes_sent = 0;
+
     while (1)
     {
-        client_sfd = accept(server_sfd, &c_Response, &c_addr_len);
+        client_sfd = accept(server_sfd, &s_ClientResponse, &c_addr_len);
         if (client_sfd < 0)
         {
             continue;
         } else // new connection
         {
-            // print info of a client
-            // send to client his info.
+            // send to client our info and that he is connected.
+            // recv name and add client.
+            fprintf(stdout, "New client connected.\n");
+            fprintf(stdout, "Sending data...");
+
+            int8_t msg[] = "This is server, hi."; 
+            bytes_sent = send(client_sfd, &msg, MAX_MESSAGE_LEN, 0);
+            if (bytes_sent < 0)
+            {
+                fprintf(stderr, "An error occured while sending a message: ");
+                fprintf(stderr, "%s", strerror(errno));
+            }
         }
     }
 
     close(server_sfd);
-    freeaddrinfo(s_Response);
-
+    freeaddrinfo(s_ServerInfo);
     return 0;
 }
 
