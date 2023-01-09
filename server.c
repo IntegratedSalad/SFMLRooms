@@ -59,29 +59,41 @@ int main(int argc, const char* argv[])
     int client_sfd = 0;
     struct sockaddr s_ClientResponse;
     socklen_t c_addr_len = sizeof(s_ClientResponse);
+    struct s_Client client_arr[MAX_CLIENTS];
 
     int bytes_sent = 0;
-
     while (1)
     {
         client_sfd = accept(server_sfd, &s_ClientResponse, &c_addr_len);
-        if (client_sfd < 0)
+        if (client_sfd < 0) // error
         {
+            /* Serve... */
+            /* Listen for messages */
+            /* Respond */
+            
             continue;
-        } else // new connection
+        
+        } else if (client_sfd == 0)
         {
-            // send to client our info and that he is connected.
-            // recv name and add client.
-            fprintf(stdout, "New client connected.\n");
-            fprintf(stdout, "Sending data...");
+            // Probable disconnection
+            fprintf(stdout, "Client just disconnected!");
+        } 
+        else // new connection
+        {
+            bytes_sent = send_name_request(client_sfd);
+            // client has to respond immediately - if not, we have to track who sends NAME_SET here!
+            
 
-            int8_t msg[] = "This is server, hi."; 
-            bytes_sent = send(client_sfd, &msg, MAX_MESSAGE_LEN, 0);
-            if (bytes_sent < 0)
-            {
-                fprintf(stderr, "An error occured while sending a message: ");
-                fprintf(stderr, "%s", strerror(errno));
-            }
+            // int8_t msg_data[] = "You've successfully connected to the server.";
+            // // add message spliting in case of it being too big.
+            // bytes_sent = send(client_sfd, &msg, MAX_MESSAGE_DATA_LEN, 0);
+
+
+        }
+        if (bytes_sent < 0)
+        {
+            fprintf(stderr, "An error occured while sending a message: ");
+            fprintf(stderr, "%s", strerror(errno));
         }
     }
 
@@ -110,4 +122,22 @@ void list_all_addresses(struct addrinfo* s_addressinfo)
             fprintf(stdout, "IPv6: %s\n", inet_ntop(sp->ai_family, address, ipstr, sizeof(ipstr)));
         }
     }
+}
+
+int receive_message(int fd, char* msg)
+{
+    return 0;
+}
+
+int send_name_request(int cfd)
+{
+    uint8_t buffer[MAX_MESSAGE_LEN];
+    buffer[0] = ((uint16_t)NAME_REQUEST >> 8);
+    buffer[1] = ((uint16_t)NAME_REQUEST & 0xFF);
+
+    for (int i = 0; i < MAX_MESSAGE_DATA_LEN; i++)
+    {
+        buffer[2 + i] = 0;
+    }
+    return send(cfd, &buffer, MAX_MESSAGE_LEN, 0);
 }

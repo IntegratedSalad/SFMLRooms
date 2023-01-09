@@ -4,6 +4,7 @@
 */
 #define BACKLOG 10
 
-
 int create_server_socket(struct addrinfo hints, struct addrinfo* response);
 void list_all_addresses(struct addrinfo*);
+int send_name_request(int cfd);
+int receive_message(int fd, char* msg);
