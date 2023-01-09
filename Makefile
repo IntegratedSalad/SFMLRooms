@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -fstack-protector
+CFLAGS = -Wall
 
 cclient: cclient.c cclient.h interface.h interface.o
 	$(CC) $(CFLAGS) interface.o -o $@ $@.c

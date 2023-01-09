@@ -77,8 +77,6 @@ int main(int argc, const char* argv[])
         
         } else if (client_sfd == 0)
         {
-            // Probable disconnection
-            fprintf(stdout, "Client just disconnected!\n");
         } 
         else // new connection
         {
@@ -90,11 +88,13 @@ int main(int argc, const char* argv[])
                 uint16_t num_id = (message_buffer[0] << 8) | message_buffer[1];
                 if (num_id == (uint16_t)NAME_SET)
                 {
-                    fprintf(stdout, "Client's name:");
+                    fprintf(stdout, "Client's name:\n");
                     for (uint8_t* p = message_buffer + 2; *p != '\0'; p++)
                     {
                         fprintf(stdout, "%c", *p);
                     }
+
+                    // Send message to all (in the same room), that a new client has connected!
                 }
             } 
             else 
@@ -123,7 +123,7 @@ int main(int argc, const char* argv[])
     return 0;
 }
 
-void list_all_addresses(struct addrinfo* s_addressinfo)
+static void list_all_addresses(struct addrinfo* s_addressinfo)
 {
     struct addrinfo* sp;
     void* address;
@@ -150,7 +150,7 @@ int receive_message(int fd, char* msg)
     return 0;
 }
 
-int send_name_request(int cfd)
+static int send_name_request(int cfd) // TODO: Change caller to use function in interface.h
 {
     uint8_t buffer[MAX_MESSAGE_LEN];
     buffer[0] = ((uint16_t)NAME_REQUEST >> 8);

@@ -34,3 +34,5 @@ typedef struct s_Message
 // Fail if problem with sending function
 
 void close_on_fail(ssize_t bytes, const char* msg, int fd);
+int send_message(const int fd, const MessageId id, const uint8_t data[MAX_MESSAGE_DATA_LEN], const uint8_t data_len);
+s_Message unpack_message(MessageId id, const uint8_t data[MAX_MESSAGE_DATA_LEN]);

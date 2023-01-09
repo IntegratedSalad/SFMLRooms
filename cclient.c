@@ -61,16 +61,16 @@ int main(int argc, const char* argv[])
             exit(-1);
         } else if (bytes_received > 0)
         {
-            process_message(buff, cfd);
+            (void)process_message(buff, cfd);
         }
     }
     close(cfd);
     return 0;
 }
 
-int process_message(uint8_t* msg_in_buffer, int cfd)
+static int process_message(uint8_t* msg_in_buffer, int cfd)
 {
-    uint8_t msg_out_buffer[MAX_MESSAGE_LEN];
+    uint8_t response_data[MAX_MESSAGE_DATA_LEN];
     uint16_t response_id;
 
     uint16_t num_id = (msg_in_buffer[0] << 8) | msg_in_buffer[1];
@@ -82,23 +82,18 @@ int process_message(uint8_t* msg_in_buffer, int cfd)
         case NAME_REQUEST:
         {
             fprintf(stdout, "Received a request for name\n.");
-            response_id = (uint16_t)NAME_SET;
-            
-            msg_out_buffer[0] = ((uint16_t)NAME_SET >> 8);
-            msg_out_buffer[1] = ((uint16_t)NAME_SET & 0xFF);
             int name_len = strlen(client_name);
-            
-            if (strlcpy((char*)msg_out_buffer + 2, client_name, name_len) <= 0)
+            if (strlcpy((char*)response_data, client_name, name_len) <= 0)
             {
                 fprintf(stderr, "Couldn't copy name to an out buffer.\n");
-                exit(-1);
-            } 
-
-            for (int i = 0; i < MAX_MESSAGE_DATA_LEN - name_len; i++)
-            {
-                msg_out_buffer[2 + name_len] = 0;
             }
-            close_on_fail(send(cfd, msg_out_buffer, MAX_MESSAGE_LEN, 0), "Couldn't send client's name as response.", cfd);
+            else
+            {
+                if (send_message(cfd, NAME_SET, response_data, sizeof(response_data)) <= 0)
+                {
+                    fprintf(stderr, "Failed to send name.\n");
+                }
+            }
         }
         default:
         {
