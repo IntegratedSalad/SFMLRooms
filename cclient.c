@@ -83,6 +83,7 @@ int process_message(uint8_t* msg_in_buffer, int cfd)
         {
             fprintf(stdout, "Received a request for name\n.");
             response_id = (uint16_t)NAME_SET;
+            
             msg_out_buffer[0] = ((uint16_t)NAME_SET >> 8);
             msg_out_buffer[1] = ((uint16_t)NAME_SET & 0xFF);
             int name_len = strlen(client_name);

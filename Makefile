@@ -8,9 +8,10 @@ server: server.c server.h interface.h interface.o
 	$(CC) $(CFLAGS) interface.o -o $@ $@.c
 
 interface:
-	$(CC) $(CFLAGS) -o $@.o
+	$(CC) -c $(CFLAGS) $@.c
 
-all: cclient server interface.o
+all: interface cclient server
+	-rm -f interface.o
 
 clean:
 	-rm -f cclient server interface.o

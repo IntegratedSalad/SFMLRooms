@@ -62,6 +62,8 @@ int main(int argc, const char* argv[])
     struct s_Client client_arr[MAX_CLIENTS];
 
     int bytes_sent = 0;
+    int bytes_received = 0;
+    uint8_t message_buffer[MAX_MESSAGE_LEN];
     while (1)
     {
         client_sfd = accept(server_sfd, &s_ClientResponse, &c_addr_len);
@@ -76,13 +78,32 @@ int main(int argc, const char* argv[])
         } else if (client_sfd == 0)
         {
             // Probable disconnection
-            fprintf(stdout, "Client just disconnected!");
+            fprintf(stdout, "Client just disconnected!\n");
         } 
         else // new connection
         {
             bytes_sent = send_name_request(client_sfd);
+            bytes_received = recv(client_sfd, &message_buffer, MAX_MESSAGE_LEN, 0);
+
+            if (bytes_received > 0)
+            {
+                uint16_t num_id = (message_buffer[0] << 8) | message_buffer[1];
+                if (num_id == (uint16_t)NAME_SET)
+                {
+                    fprintf(stdout, "Client's name:");
+                    for (uint8_t* p = message_buffer + 2; *p != '\0'; p++)
+                    {
+                        fprintf(stdout, "%c", *p);
+                    }
+                }
+            } 
+            else 
+            {
+                fprintf(stderr, "Couldn't receive name.\n");
+            }
+
             // client has to respond immediately - if not, we have to track who sends NAME_SET here!
-            
+            // receive...
 
             // int8_t msg_data[] = "You've successfully connected to the server.";
             // // add message spliting in case of it being too big.
