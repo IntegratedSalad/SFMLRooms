@@ -38,6 +38,10 @@ int main(int argc, const char* argv[])
     struct pollfd listener_pfd = {.fd = server_sfd, .events = POLL_IN};
     pfds[clients_num] = listener_pfd;
 
+    s_Room s_GlobalRoom = {.id = 0};
+    s_Room** rooms = malloc(sizeof(s_Room*) * 1);
+    uint32_t room_count = 1;
+
     while (1)
     {
         if (poll(pfds, clients_num + 1, -1) == -1)
@@ -64,6 +68,8 @@ int main(int argc, const char* argv[])
                         struct pollfd client_pfd = {.fd = client_sfd, .events = POLL_IN};
                         pfds[clients_num] = client_pfd;
                         bytes_sent = send_name_request(client_sfd);
+                        add_client_to_room()
+                        
                     }
                 }
                 else // client sent something 
@@ -99,6 +105,7 @@ int main(int argc, const char* argv[])
         }
     }
     close(server_sfd);
+    free(rooms);
     return 0;
 }
 
@@ -188,4 +195,53 @@ static int get_listener_socket(void)
     fprintf(stdout, "Socket listening on port %s IP: %s\n", PORT, inet_ntoa(s_ia));
     freeaddrinfo(s_ServerInfo);
     return listener;
+}
+
+static uint16_t count_user_rooms(int cfd, s_Room** all_rooms, int32_t room_count)
+{
+    s_Room* rp;
+    uint16_t user_rooms = 0;
+
+    for (int i = 0; i < room_count; i++)
+    {
+        rp = all_rooms[i];
+        uint16_t fd_to_compare = (rp->id >> 16);
+        if (fd_to_compare == (uint16_t)cfd) // casting int32_t to uint16_t, but we know that we have a limit of clients that is less than MAX value of uint16_t
+        {
+            uint16_t count_to_compare = (rp->id & 0x0000FFFF);
+            if (count_to_compare > user_rooms)
+            {
+                user_rooms = count_to_compare;
+            }
+        }
+    }
+
+    return user_rooms;
+}
+
+static s_Room* get_room(int32_t id, s_Room** all_rooms, int32_t room_count)
+{
+    s_Room* room = NULL;
+    s_Room* rp;
+
+    for (int i = 0; i < room_count; i++)
+    {
+        rp = all_rooms[i];
+        if (rp->id == id)
+        {
+            room = rp;
+            break;
+        }
+    }
+    return room;
+}
+
+static int add_client_to_room(s_Room* room, int cfd)
+{
+    if (room->clients_num >= MAX_CLIENTS_ROOM) return 0;
+
+    room->clients[room->clients_num] = cfd;
+    room->clients_num++;
+
+    return 1;
 }

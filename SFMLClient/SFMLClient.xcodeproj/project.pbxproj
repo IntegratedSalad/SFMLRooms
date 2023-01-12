@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D7B19627296F6C7E00251A6A /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7B19626296F6C7E00251A6A /* ResourcePath.mm */; };
+		D7B1962A296F6C7E00251A6A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7B19629296F6C7E00251A6A /* main.cpp */; };
+		D7B1963B296FF73200251A6A /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7B19639296FF73100251A6A /* App.cpp */; };
+		D7B1963E2970247F00251A6A /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7B1963C2970247F00251A6A /* UI.cpp */; };
+		D7B196412970248800251A6A /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7B1963F2970248800251A6A /* Client.cpp */; };
+		D7B196432970274700251A6A /* dos_vga_font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B196422970274700251A6A /* dos_vga_font.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D7B19621296F6C7E00251A6A /* SFMLClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFMLClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7B19625296F6C7E00251A6A /* SFMLClient-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SFMLClient-Info.plist"; path = "../SFMLClient-Info.plist"; sourceTree = "<group>"; };
+		D7B19626296F6C7E00251A6A /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
+		D7B19628296F6C7E00251A6A /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		D7B19629296F6C7E00251A6A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D7B19639296FF73100251A6A /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
+		D7B1963A296FF73200251A6A /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		D7B1963C2970247F00251A6A /* UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UI.cpp; sourceTree = "<group>"; };
+		D7B1963D2970247F00251A6A /* UI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UI.hpp; sourceTree = "<group>"; };
+		D7B1963F2970248800251A6A /* Client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
+		D7B196402970248800251A6A /* Client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Client.hpp; sourceTree = "<group>"; };
+		D7B196422970274700251A6A /* dos_vga_font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dos_vga_font.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D7B1961D296F6C7E00251A6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D7B19617296F6C7E00251A6A = {
+			isa = PBXGroup;
+			children = (
+				D7B19623296F6C7E00251A6A /* SFMLClient */,
+				D7B19622296F6C7E00251A6A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7B19622296F6C7E00251A6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7B19621296F6C7E00251A6A /* SFMLClient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7B19623296F6C7E00251A6A /* SFMLClient */ = {
+			isa = PBXGroup;
+			children = (
+				D7B19626296F6C7E00251A6A /* ResourcePath.mm */,
+				D7B19628296F6C7E00251A6A /* ResourcePath.hpp */,
+				D7B19629296F6C7E00251A6A /* main.cpp */,
+				D7B19639296FF73100251A6A /* App.cpp */,
+				D7B1963C2970247F00251A6A /* UI.cpp */,
+				D7B1963F2970248800251A6A /* Client.cpp */,
+				D7B196402970248800251A6A /* Client.hpp */,
+				D7B1963D2970247F00251A6A /* UI.hpp */,
+				D7B1963A296FF73200251A6A /* App.hpp */,
+				D7B1962B296F6C7E00251A6A /* Resources */,
+				D7B19624296F6C7E00251A6A /* Supporting Files */,
+			);
+			path = SFMLClient;
+			sourceTree = "<group>";
+		};
+		D7B19624296F6C7E00251A6A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7B19625296F6C7E00251A6A /* SFMLClient-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7B1962B296F6C7E00251A6A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D7B196422970274700251A6A /* dos_vga_font.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D7B19620296F6C7E00251A6A /* SFMLClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7B19636296F6C7E00251A6A /* Build configuration list for PBXNativeTarget "SFMLClient" */;
+			buildPhases = (
+				D7B1961C296F6C7E00251A6A /* Sources */,
+				D7B1961D296F6C7E00251A6A /* Frameworks */,
+				D7B1961E296F6C7E00251A6A /* Resources */,
+				D7B1961F296F6C7E00251A6A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SFMLClient;
+			productName = SFMLClient;
+			productReference = D7B19621296F6C7E00251A6A /* SFMLClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7B19618296F6C7E00251A6A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1320;
+				ORGANIZATIONNAME = Dev;
+				TargetAttributes = {
+					D7B19620296F6C7E00251A6A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = D7B1961B296F6C7E00251A6A /* Build configuration list for PBXProject "SFMLClient" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D7B19617296F6C7E00251A6A;
+			productRefGroup = D7B19622296F6C7E00251A6A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7B19620296F6C7E00251A6A /* SFMLClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D7B1961E296F6C7E00251A6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7B196432970274700251A6A /* dos_vga_font.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D7B1961F296F6C7E00251A6A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# This shell script simply copies required SFML dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# SETTINGS\nSFML_DEPENDENCIES_INSTALL_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_FRAMEWORK_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_LIB_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks/lib\"\nFRAMEWORKS_FULL_PATH=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n# Are we building a project that uses frameworks or dylibs?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert: not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $@ is some paths\n{\n    test $# -ge 1\n    assert $? \"force_remove() requires at least one parameter\"\n    rm -fr $@\n    assert $? \"couldn't remove $@\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1\"*\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            source=\"$CMAKE_INSTALL_FRAMEWORK_PREFIX/sfml-$1.framework\"\n            target=\"sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1-d.dylib\"\n            target=\"`readlink $source`\"\n        else\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1.dylib\"\n            target=\"`readlink $source`\"\n        fi\n\n        copy \"$source\" \"$dest/$target\"\n\n        # copy extra dependencies\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\" frameworks too\n            for f in \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\"\n            do\n                copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/$f.framework\" \"$dest/$f.framework\"\n            done\n        elif [ \"$1\" = \"graphics\" ]\n        then\n            copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                \n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7B1961C296F6C7E00251A6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7B1963B296FF73200251A6A /* App.cpp in Sources */,
+				D7B1963E2970247F00251A6A /* UI.cpp in Sources */,
+				D7B196412970248800251A6A /* Client.cpp in Sources */,
+				D7B1962A296F6C7E00251A6A /* main.cpp in Sources */,
+				D7B19627296F6C7E00251A6A /* ResourcePath.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D7B19634296F6C7E00251A6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /opt/homebrew/Cellar/sfml/2.5.1_1/include/SFML/;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/sfml/2.5.1_1/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = DYLIBS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		D7B19635296F6C7E00251A6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /opt/homebrew/Cellar/sfml/2.5.1_1/include/SFML/;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/sfml/2.5.1_1/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = DYLIBS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+		D7B19637296F6C7E00251A6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "SFMLClient/SFMLClient-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D7B19638296F6C7E00251A6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "SFMLClient/SFMLClient-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D7B1961B296F6C7E00251A6A /* Build configuration list for PBXProject "SFMLClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7B19634296F6C7E00251A6A /* Debug */,
+				D7B19635296F6C7E00251A6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7B19636296F6C7E00251A6A /* Build configuration list for PBXNativeTarget "SFMLClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7B19637296F6C7E00251A6A /* Debug */,
+				D7B19638296F6C7E00251A6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7B19618296F6C7E00251A6A /* Project object */;
+}
