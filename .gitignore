@@ -55,4 +55,10 @@ dkms.conf
 
 cappnotes.c
 server
-client
+cclient
+
+SFMLClient/SFMLClient/
+*.pbxproj
+*.xcworkspacedata
+*.plist
+*.xcuserstate
